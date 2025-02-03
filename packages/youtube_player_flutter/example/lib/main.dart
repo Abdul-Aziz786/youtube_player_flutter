@@ -164,6 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
               .load(_ids[(_ids.indexOf(data.videoId) + 1) % _ids.length]);
           _showSnackBar('Next Video Started!');
         },
+        toggleFullScreen: () {},
       ),
       builder: (context, player) => Scaffold(
         appBar: AppBar(

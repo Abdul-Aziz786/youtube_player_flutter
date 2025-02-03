@@ -50,6 +50,7 @@ class _VideoListState extends State<VideoList> {
               RemainingDuration(),
               FullScreenButton(),
             ],
+            toggleFullScreen: () {},
           );
         },
         itemCount: _controllers.length,

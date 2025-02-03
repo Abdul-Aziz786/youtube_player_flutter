@@ -4,7 +4,6 @@
 
 import 'dart:developer';
 
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
@@ -156,6 +155,7 @@ class YoutubePlayerController extends ValueNotifier<YoutubePlayerValue> {
 
   /// Composes all the flags required to control the player.
   final YoutubePlayerFlags flags;
+  late Function toggleFullScreen;
 
   /// Creates [YoutubePlayerController].
   YoutubePlayerController({
@@ -275,17 +275,18 @@ class YoutubePlayerController extends ValueNotifier<YoutubePlayerValue> {
   void setPlaybackRate(double rate) => _callMethod('setPlaybackRate($rate)');
 
   /// Toggles the player's full screen mode.
-  void toggleFullScreenMode() {
-    updateValue(value.copyWith(isFullScreen: !value.isFullScreen));
-    if (value.isFullScreen) {
-      SystemChrome.setPreferredOrientations([
-        DeviceOrientation.landscapeLeft,
-        DeviceOrientation.landscapeRight,
-      ]);
-    } else {
-      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-    }
-  }
+  // void toggleFullScreenMode() {
+  //   updateValue(value.copyWith(isFullScreen: !value.isFullScreen));
+  //   this.t
+  //   // if (value.isFullScreen) {
+  //   //   SystemChrome.setPreferredOrientations([
+  //   //     DeviceOrientation.landscapeLeft,
+  //   //     DeviceOrientation.landscapeRight,
+  //   //   ]);
+  //   // } else {
+  //   //   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  //   // }
+  // }
 
   /// MetaData for the currently loaded or cued video.
   YoutubeMetaData get metadata => value.metaData;

@@ -40,9 +40,10 @@ import 'raw_youtube_player.dart';
 ///
 class YoutubePlayer extends StatefulWidget {
   /// Creates [YoutubePlayer] widget.
-  const YoutubePlayer({
+  YoutubePlayer({
     super.key,
     required this.controller,
+    required this.toggleFullScreen,
     this.width,
     this.aspectRatio = 16 / 9,
     this.controlsTimeOut = const Duration(seconds: 3),
@@ -57,11 +58,15 @@ class YoutubePlayer extends StatefulWidget {
     this.actionsPadding = const EdgeInsets.all(8.0),
     this.thumbnail,
     this.showVideoProgressIndicator = false,
-  })  : progressColors = progressColors ?? const ProgressBarColors(),
-        progressIndicatorColor = progressIndicatorColor ?? Colors.red;
+  }) {
+    this.progressColors = progressColors ?? const ProgressBarColors();
+    this.progressIndicatorColor = progressIndicatorColor ?? Colors.red;
+    controller.toggleFullScreen = toggleFullScreen;
+  }
 
   /// A [YoutubePlayerController] to control the player.
   final YoutubePlayerController controller;
+  late final Function toggleFullScreen;
 
   /// {@template youtube_player_flutter.width}
   /// Defines the width of the player.
@@ -92,12 +97,12 @@ class YoutubePlayer extends StatefulWidget {
   /// {@template youtube_player_flutter.progressColors}
   /// Overrides default colors of the progress bar, takes [ProgressColors].
   /// {@endtemplate}
-  final ProgressBarColors progressColors;
+  late ProgressBarColors progressColors;
 
   /// {@template youtube_player_flutter.progressIndicatorColor}
   /// Overrides default color of progress indicator shown below the player(if enabled).
   /// {@endtemplate}
-  final Color progressIndicatorColor;
+  late Color progressIndicatorColor;
 
   /// {@template youtube_player_flutter.onReady}
   /// Called when player is ready to perform control methods like:

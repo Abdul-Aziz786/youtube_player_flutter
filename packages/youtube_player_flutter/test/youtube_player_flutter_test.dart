@@ -41,6 +41,7 @@ Widget buildPlayer({
         progressIndicatorColor: progressIndicatorColor,
         thumbnail: thumbnail,
         topActions: topActions,
+        toggleFullScreen: () {},
       ),
     ),
   );
